@@ -8,13 +8,15 @@ public interface UserDAO {
 
     void insert(User user);
 
-    void update(int id, String name, String pass);
+    void update(String login, String name, String password);
 
     void delete(User user);
 
-    User getUserById(int id);
+    User getUserByLogin(String login);
 
     List<User> getUserListByName(String name);
+
+    List<User> getUserListByLogin(String login);
 
     List<User> getAllUserList();
 }

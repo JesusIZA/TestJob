@@ -24,14 +24,14 @@ public class H2DAO implements UserDAO {
 
     @Override
     public void insert(User user) {
-        String sql = "insert into users (id, user_name, password) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, new Object[]{user.getId(), user.getName(), user.getPassword()});
+        String sql = "insert into USERS (LOGIN, USER_NAME, PASSWORD) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, new Object[]{user.getLogin(), user.getName(), user.getPassword()});
     }
 
     @Override
-    public void update(int id, String name, String pass) {
-        String sql = "update users set user_name = ?, password = ? WHERE id = ?";
-        jdbcTemplate.update(sql, new Object[]{name, pass, id});
+    public void update(String login, String name, String pass) {
+        String sql = "update USERS set USER_NAME = ?, PASSWORD = ? WHERE LOGIN = ?";
+        jdbcTemplate.update(sql, new Object[]{name, pass, login});
     }
 
     public void insert(List<User> userList) {
@@ -42,29 +42,35 @@ public class H2DAO implements UserDAO {
 
     @Override
     public void delete(User user) {
-        delete(user.getId());
+        delete(user.getLogin());
     }
 
-    public void delete(int id) {
-        String sql = "delete from users where id=?";
-        int result = jdbcTemplate.update(sql, id);
+    public void delete(String login) {
+        String sql = "delete from USERS where LOGIN=?";
+        int result = jdbcTemplate.update(sql, login);
     }
 
     @Override
-    public User getUserById(int id) {
-        String sql = "select * from users where id=?";
-        return jdbcTemplate.queryForObject(sql, new Object[] {id}, new UserRowMapper());
+    public User getUserByLogin(String login) {
+        String sql = "select * from USERS where LOGIN=?";
+        return jdbcTemplate.queryForObject(sql, new Object[] {login}, new UserRowMapper());
     }
 
     @Override
     public List<User> getUserListByName(String name) {
-        String sql = "select * from users where user_name like ?";
+        String sql = "select * from USERS where USER_NAME like ?";
         return jdbcTemplate.query(sql, new Object[] {name}, new UserRowMapper());
     }
 
     @Override
+    public List<User> getUserListByLogin(String login) {
+        String sql = "select * from USERS where LOGIN like ?";
+        return jdbcTemplate.query(sql, new Object[] {login}, new UserRowMapper());
+    }
+
+    @Override
     public List<User> getAllUserList() {
-        String sql = "select * from users";
+        String sql = "select * from USERS";
         return jdbcTemplate.query(sql, new UserRowMapper());
     }
 
@@ -73,9 +79,9 @@ public class H2DAO implements UserDAO {
         @Override
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
             User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setName(rs.getString("user_name"));
-            user.setPassword(rs.getString("password"));
+            user.setLogin(rs.getString("LOGIN"));
+            user.setName(rs.getString("USER_NAME"));
+            user.setPassword(rs.getString("PASSWORD"));
             return user;
         }
 

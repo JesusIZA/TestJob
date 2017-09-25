@@ -1,12 +1,14 @@
 package ua.jrc.bd.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Jesus on 21.09.2017.
  */
 
-public class User {
+public class User implements Serializable {
 
-    private int id;
+    private String login;
 
     private String name;
 
@@ -14,12 +16,12 @@ public class User {
 
     public User() {}
 
-    public int getId() {
-        return id;
+    public String getLogin() {
+        return login;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getName() {
@@ -41,9 +43,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
+                "Login=" + login +
+                ", Name='" + name + '\'' +
+                ", Password='" + password + '\'' +
                 '}';
     }
 }

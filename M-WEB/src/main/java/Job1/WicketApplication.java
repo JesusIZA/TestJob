@@ -1,6 +1,6 @@
 package Job1;
 
-import Job1.ua.jrc.web.welcomepage.WelcomePage;
+import Job1.ua.jrc.web.login.LoginPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
@@ -18,7 +18,7 @@ public class WicketApplication extends WebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-		return WelcomePage.class;
+		return LoginPage.class;
 	}
 
 	/**
