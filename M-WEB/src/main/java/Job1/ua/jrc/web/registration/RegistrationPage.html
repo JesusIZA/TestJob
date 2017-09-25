@@ -2,7 +2,7 @@
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
 <head>
     <meta charset="UTF-8">
-    <title>Log In</title>
+    <title>Registration</title>
 </head>
 <body>
     <div wicket:id="header"></div>
@@ -13,17 +13,19 @@
         <label wicket:id="labelLogin"/>
         <label wicket:id="labelLogin2"/><br />
 
+        <input type="text" wicket:id="name">
+        <label wicket:id="labelName"/><br />
+
         <input type="text" wicket:id="password">
         <label wicket:id="labelPassword"/>
         <label wicket:id="labelPassword2"/><br />
 
-        <input type="submit" value="Log In" wicket:id="submit">
+        <input type="submit" value="Registration" wicket:id="submit">
 
     </form>
 
     <div>
-        <a href="../Job1/wicket/bookmarkable/Job1.ua.jrc.web.registration.RegistrationPage">Registration</a>
+        <a href="../Job1/wicket/bookmarkable/Job1.ua.jrc.web.login.LoginPage">Login</a>
     </div>
-
 </body>
 </html>
