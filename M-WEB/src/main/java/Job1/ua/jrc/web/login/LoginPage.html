@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Sing In</title>
+
+    <link rel="stylesheet" type="text/css" href="styleLogin.css"/>
 </head>
 <body>
     <div wicket:id="header"></div>
+    <div class="content">
+        <form wicket:id="form">
+            Login:<br />
+            <input type="text" wicket:id="login"><br />
+            <label class="errors" wicket:id="labelLogin"/><br />
+            Password:<br />
+            <input type="text" wicket:id="password"><br />
+            <label class="errors" wicket:id="labelPassword"/><br />
 
-    <form wicket:id="form">
-        Login:
-        <input type="text" wicket:id="login">
-        <label wicket:id="labelLogin"/><br />
-        Password:
-        <input type="text" wicket:id="password">
-        <label wicket:id="labelPassword"/><br />
+            <input type="submit" value="Sign In" wicket:id="submit">
 
-        <input type="submit" value="Sign In" wicket:id="submit">
+        </form>
 
-    </form>
-
-    <div>
-        <a href="../Job1/wicket/bookmarkable/Job1.ua.jrc.web.registration.RegistrationPage">Registration</a>
+        <div>
+            <a href="../Job1/wicket/bookmarkable/Job1.ua.jrc.web.registration.RegistrationPage">Registration</a>
+        </div>
     </div>
-
 </body>
 </html>

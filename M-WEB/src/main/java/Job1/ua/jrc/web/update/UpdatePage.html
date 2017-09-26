@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Update</title>
+
+    <link rel="stylesheet" type="text/css" href="styleLogin.css"/>
 </head>
 <body>
     <div wicket:id="header"></div>
+    <div class="content">
+        <form wicket:id="form">
+            Login:<br />
+            <input type="text" wicket:id="login"><br />
+            Name:<br />
+            <input type="text" wicket:id="name"><br />
+            <label class="errors" wicket:id="labelName"/><br />
+            Password:<br />
+            <input  type="text" wicket:id="password"><br />
+            <label class="errors" wicket:id="labelPassword"/><br />
 
-    <form wicket:id="form">
-        Login:
-        <input type="text" wicket:id="login"><br />
-        Name:
-        <input type="text" wicket:id="name">
-        <label wicket:id="labelName"/><br />
-        Password:
-        <input type="text" wicket:id="password">
-        <label wicket:id="labelPassword"/><br />
+            <input type="submit" value="Update" wicket:id="submit">
 
-        <input type="submit" value="Update" wicket:id="submit">
-
-    </form>
+        </form>
+    </div>
 </body>
 </html>

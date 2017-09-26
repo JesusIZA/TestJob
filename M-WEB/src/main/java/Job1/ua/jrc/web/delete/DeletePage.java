@@ -23,13 +23,9 @@ public class DeletePage extends WebPage {
 
         final User user = new User();
 
-        add(new Label("header", "Enter PASSWORD for DELETE profile"));
+        add(new Label("header", "Enter your PASSWORD for DELETE profile"));
 
         Form form = new Form("form");
-
-        final Label labelLogin = new Label("labelLogin", "");
-        labelLogin.setOutputMarkupId(true);
-        labelLogin.setOutputMarkupPlaceholderTag(true);
 
         final Label labelPassword = new Label("labelPassword", "");
         labelPassword.setOutputMarkupId(true);
@@ -38,6 +34,7 @@ public class DeletePage extends WebPage {
         final TextField login = new TextField("login", new PropertyModel(user, "login"));
         login.setOutputMarkupId(true);
         login.setDefaultModelObject(loginer);
+        login.setEnabled(false);
 
         final TextField password = new TextField("password", new PropertyModel(user, "password"));
         password.setOutputMarkupId(true);
@@ -47,52 +44,29 @@ public class DeletePage extends WebPage {
             protected void onSubmit(AjaxRequestTarget target, Form form){
                 super.onSubmit();
 
-                if(login.getInput() != ""){
                     if(password.getInput() != ""){
 
                         ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
                         H2DAO h2DAO = (H2DAO) context.getBean("H2DAO");
 
-                        String flag = "";
-
-                        for(User user : h2DAO.getAllUserList()){
-                            if(user.getLogin().hashCode() == login.getInput().hashCode())
-                                flag = user.getLogin();
-                        }
-
-                        if(flag == ""){
-                            labelPassword.setDefaultModelObject("");
-                            labelLogin.setDefaultModelObject("Login does not exist!");
-                        } else {
                             if (password.getInput().hashCode() == h2DAO.getUserByLogin(login.getInput()).getPassword().hashCode()) {
                                 h2DAO.delete(login.getInput());
                                 System.out.println("delete");
                                 setResponsePage(LoginPage.class);
                             } else {
-                                labelLogin.setDefaultModelObject("");
                                 labelPassword.setDefaultModelObject("Password is failed!");
                             }
-                        }
                     } else {
-                        labelLogin.setDefaultModelObject("");
                         labelPassword.setDefaultModelObject("Password is not entered!");
                     }
-                } else {
-                    labelPassword.setDefaultModelObject("");
-                    labelLogin.setDefaultModelObject("Login is not entered!");
-                }
 
-                target.add(labelLogin);
                 target.add(labelPassword);
-
             }
         };
 
         add(form);
 
         form.add(login);
-        form.add(labelLogin);
-
         form.add(password);
         form.add(labelPassword);
 
