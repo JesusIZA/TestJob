@@ -55,8 +55,8 @@ public class UpdatePage extends WebPage {
             protected void onSubmit(AjaxRequestTarget target, Form form){
                 super.onSubmit();
 
-                if(password.getInput() != ""){
-                    if(name.getInput() != "") {
+                if(password.getInput() != ""  && password.getInput().length() <= 10){
+                    if(name.getInput() != ""  && name.getInput().length() <= 20) {
                         if(password.getInput().length() < 4){
                             labelName.setDefaultModelObject("");
                             labelPassword.setDefaultModelObject("Password is too short!");
@@ -73,11 +73,11 @@ public class UpdatePage extends WebPage {
                         }
                     } else {
                         labelPassword.setDefaultModelObject("");
-                        labelName.setDefaultModelObject("Name is not entered!");
+                        labelName.setDefaultModelObject("Name is not entered or length more then 20 symbols!");
                     }
                 } else {
                     labelName.setDefaultModelObject("");
-                    labelPassword.setDefaultModelObject("Password is not entered!");
+                    labelPassword.setDefaultModelObject("Password is not entered or length more then 10 symbols!");
                 }
 
                 target.add(labelName);

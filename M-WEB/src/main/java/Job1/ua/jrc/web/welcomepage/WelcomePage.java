@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.springframework.context.ApplicationContext;
@@ -85,31 +86,25 @@ public class WelcomePage extends WebPage{
         final TextField name = new TextField("searchText", new PropertyModel(user, "name"));
         name.setOutputMarkupId(true);
 
-        final Label searchUser = new Label("searchU", "");
-        searchUser.setOutputMarkupId(true);
-        searchUser.setOutputMarkupPlaceholderTag(true);
+        final RepeatingView listItems = new RepeatingView("searchU");
+        listItems.setOutputMarkupId(true);
+        listItems.setOutputMarkupPlaceholderTag(true);
 
-        AjaxButton searchBtn = new AjaxButton("search") {
+        Button searchBtn = new Button("search") {
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                super.onSubmit(target, form);
+            public void onSubmit() {
 
                 List<User> tempList = h2DAO.getUserListByName(name.getInput());
-                StringBuilder stringBuilder = new StringBuilder();
+
                 for (User u: tempList){
-                    stringBuilder.append("Login: " + u.getLogin());
-                    stringBuilder.append(" Name: " + u.getName());
-                    stringBuilder.append(" Password: " + u.getPassword());
-                    stringBuilder.append("\n");
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("Login: [" + u.getLogin() + "] Name: [" + u.getName() + "] Password: [" + u.getPassword() + "]");
+                    listItems.add(new Label(listItems.newChildId(), sb));
                 }
 
-                searchUser.setDefaultModelObject(stringBuilder);
-
-                System.out.println(name.getInput());
-                target.add(searchUser);
             }
         };
-        searchForm.add(searchUser);
+        searchForm.add(listItems);
         searchForm.add(name);
         searchForm.add(searchBtn);
         add(searchForm);

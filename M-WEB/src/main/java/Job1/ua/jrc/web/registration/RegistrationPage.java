@@ -50,9 +50,9 @@ public class RegistrationPage extends WebPage{
             protected void onSubmit(AjaxRequestTarget target, Form form){
                 super.onSubmit();
 
-                if(login.getInput() != ""){
-                    if(name.getInput() != "") {
-                        if (password.getInput() != "") {
+                if(login.getInput() != "" && login.getInput().length() <= 10){
+                    if(name.getInput() != "" && login.getInput().length() <= 20) {
+                        if (password.getInput() != "" && login.getInput().length() <= 10) {
 
                             ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
                             H2DAO h2DAO = (H2DAO) context.getBean("H2DAO");
@@ -93,19 +93,19 @@ public class RegistrationPage extends WebPage{
                             //Password is not entered
                             labelName.setDefaultModelObject("");
                             labelLogin.setDefaultModelObject("");
-                            labelPassword.setDefaultModelObject("Password is not entered");
+                            labelPassword.setDefaultModelObject("Password is not entered or length more then 10 symbols");
                         }
                     } else {
                         //Name is not entered
                         labelPassword.setDefaultModelObject("");
                         labelLogin.setDefaultModelObject("");
-                        labelName.setDefaultModelObject("Name is not entered");
+                        labelName.setDefaultModelObject("Name is not entered or length more then 20 symbols");
                     }
                 } else {
                     //Login is not entered
                     labelName.setDefaultModelObject("");
                     labelPassword.setDefaultModelObject("");
-                    labelLogin.setDefaultModelObject("Login is not entered");
+                    labelLogin.setDefaultModelObject("Login is not entered or length more then 10 symbols");
                 }
 
                 target.add(labelLogin);

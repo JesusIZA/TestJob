@@ -49,8 +49,8 @@ public class DeletePage extends WebPage {
                         ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
                         H2DAO h2DAO = (H2DAO) context.getBean("H2DAO");
 
-                            if (password.getInput().hashCode() == h2DAO.getUserByLogin(login.getInput()).getPassword().hashCode()) {
-                                h2DAO.delete(login.getInput());
+                            if (password.getInput().hashCode() == h2DAO.getUserByLogin(loginer).getPassword().hashCode()) {
+                                h2DAO.delete(loginer);
                                 System.out.println("delete");
                                 setResponsePage(LoginPage.class);
                             } else {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<html lang="en" xmlns:wicket="http://wicket.apache.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
@@ -7,47 +7,61 @@
     <link rel="stylesheet" type="text/css" href="styleWelcome.css"/>
 </head>
 <body>
-    <div wicket:id="namer"></div>
-    <div wicket:id="loginer"></div>
+    <div class="header">
+        <span class="allprofile">
+            <span class="profile">
+                <span wicket:id="namer"></span>
+                <span wicket:id="loginer"></span>
+            </span>
 
-    <div>
-        <form wicket:id="fupdate">
-            <input type="submit" value="Edit profile" wicket:id="update">
-        </form>
-        <form wicket:id="fdelete">
-            <input type="submit" value="Delete profile" wicket:id="delete">
-        </form>
-    </div>
+            <span class="eprofile">
+                <form wicket:id="fupdate">
+                    <input type="submit" value="Edit profile" wicket:id="update">
+                </form>
+                <form wicket:id="fdelete">
+                    <input type="submit" value="Delete profile" wicket:id="delete">
+                </form>
+            </span>
+        </span>
+        <span class="welcome">
+            <b class="w">WELCOME_jrc.ua_</b>
+        </span>
 
-    <div>
+        <span class="registration">
         <a href="../Job1/wicket/bookmarkable/Job1.ua.jrc.web.registration.RegistrationPage">Add new profile</a>
+        </span>
+        <div class="clear"></div>
     </div>
+    <br />
+    <div class="allusers">
+        <span class="loockfor">
+           <form wicket:id="formSearch">
+                <input type="text" wicket:id="searchText">
+                <input type="submit" value="Search" wicket:id="search"><br />
 
-    <div>
-       <form wicket:id="formSearch">
-            <input type="text" wicket:id="searchText">
-            <input type="submit" value="Search" wicket:id="search">
+                <ul class="searchers">
+                    <li wicket:id="searchU"></li>
+                </ul>
 
-            <div wicket:id="searchU"></div>
+            </form>
+        </span>
 
-        </form>
+        <span class="loockall">
+            <div>All users</div>
+            <table border="1">
+                <tr>
+                    <th>Login</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                </tr>
+                <tr wicket:id="rows">
+                    <td wicket:id="login"></td>
+                    <td wicket:id="name"></td>
+                    <td wicket:id="password"></td>
+                </tr>
+            </table>
+        </span>
+        <div class="clear"></div>
     </div>
-
-    <div>
-        <div>All users</div>
-        <table border="1">
-            <tr>
-                <th>Login</th>
-                <th>Name</th>
-                <th>Password</th>
-            </tr>
-            <tr wicket:id="rows">
-                <td wicket:id="login"></td>
-                <td wicket:id="name"></td>
-                <td wicket:id="password"></td>
-            </tr>
-        </table>
-    </div>
-
 </body>
 </html>

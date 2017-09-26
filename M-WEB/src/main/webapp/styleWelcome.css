@@ -1,8 +1,72 @@
 body {
     background: #efefef;
-    margin: 0;
     padding: 0;
     font: 16px/24px Arial,Tahoma, sans-serif; color: #272727;
-    width: 1000px; margin: 0 auto;
+    width: 1000px;
+    margin: auto;
     text-align: center;
+}
+
+.clear{
+    clear: both;
+}
+
+.header {
+    margin: auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #ccc;
+    width: 900px;
+}
+
+/*Profile*/
+.allprofile {
+    float: right;
+}
+
+/*Profile data*/
+.profile {
+    color: #092E67;
+}
+
+/*Profile buttons*/
+.eprofile {
+}
+
+.registration {
+    float: left;
+}
+
+/*User that you search*/
+.searchers {
+    float: right;
+    width: 350px;
+}
+
+/*All Users*/
+.allusers {
+    width: 900px;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #ccc;
+}
+
+.loockfor {
+    float: right;
+    width: 320px;
+}
+
+.loockall {
+    overflow-x:hidden;
+    float: left;
+    max-width: 500px;
+}
+
+.welcome{
+
+}
+
+.w {
+    font: 300% Arial,Tahoma, sans-serif;
 }
