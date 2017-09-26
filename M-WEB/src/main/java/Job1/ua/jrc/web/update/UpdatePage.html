@@ -2,9 +2,23 @@
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>Update</title>
 </head>
 <body>
-   update
+    <div wicket:id="header"></div>
+
+    <form wicket:id="form">
+        Login:
+        <input type="text" wicket:id="login"><br />
+        Name:
+        <input type="text" wicket:id="name">
+        <label wicket:id="labelName"/><br />
+        Password:
+        <input type="text" wicket:id="password">
+        <label wicket:id="labelPassword"/><br />
+
+        <input type="submit" value="Update" wicket:id="submit">
+
+    </form>
 </body>
 </html>

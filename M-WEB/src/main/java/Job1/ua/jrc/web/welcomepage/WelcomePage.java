@@ -23,15 +23,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WelcomePage extends WebPage implements Serializable {
+public class WelcomePage extends WebPage{
 
-    //public WelcomePage(){};
+    public WelcomePage(){};
 
-    public WelcomePage(/*PageParameters parameters*/){
+    public WelcomePage(PageParameters parameters){
 
         //Get input data (Login)
-        //final String loginer = parameters.get("userLoginer").toString();
-        final String loginer = "Login1";
+        final String loginer = parameters.get("userLoginer").toString();
+        //final String loginer = "Login1";
 
 
         //Connection to DB
@@ -85,9 +85,9 @@ public class WelcomePage extends WebPage implements Serializable {
         final TextField name = new TextField("searchText", new PropertyModel(user, "name"));
         name.setOutputMarkupId(true);
 
-        final Label serchUser = new Label("searchU", "");
-        serchUser.setOutputMarkupId(true);
-        serchUser.setOutputMarkupPlaceholderTag(true);
+        final Label searchUser = new Label("searchU", "");
+        searchUser.setOutputMarkupId(true);
+        searchUser.setOutputMarkupPlaceholderTag(true);
 
         AjaxButton searchBtn = new AjaxButton("search") {
             @Override
@@ -103,13 +103,13 @@ public class WelcomePage extends WebPage implements Serializable {
                     stringBuilder.append("\n");
                 }
 
-                serchUser.setDefaultModelObject(stringBuilder);
+                searchUser.setDefaultModelObject(stringBuilder);
 
                 System.out.println(name.getInput());
-                target.add(serchUser);
+                target.add(searchUser);
             }
         };
-        searchForm.add(serchUser);
+        searchForm.add(searchUser);
         searchForm.add(name);
         searchForm.add(searchBtn);
         add(searchForm);

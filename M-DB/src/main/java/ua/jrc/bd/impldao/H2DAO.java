@@ -31,8 +31,14 @@ public class H2DAO implements UserDAO, Serializable{
 
     @Override
     public void update(String login, String name, String pass) {
+        String sql = "update USERS set  USER_NAME = ?, PASSWORD = ? WHERE LOGIN = ?";
+        jdbcTemplate.update(sql, new Object[]{ name, pass, login});
+    }
+
+    @Override
+    public void update(User user) {
         String sql = "update USERS set USER_NAME = ?, PASSWORD = ? WHERE LOGIN = ?";
-        jdbcTemplate.update(sql, new Object[]{name, pass, login});
+        jdbcTemplate.update(sql, new Object[]{ user.getName(), user.getPassword(), user.getLogin()});
     }
 
     public void insert(List<User> userList) {

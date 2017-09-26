@@ -21,7 +21,7 @@ public class LoginPage extends WebPage {
 
         final User user = new User();
 
-        add(new Label("header", "Enter your Login and Password"));
+        add(new Label("header", "Enter your LOGIN and PASSWORD for SIGN IN"));
 
         Form form = new Form("form");
 

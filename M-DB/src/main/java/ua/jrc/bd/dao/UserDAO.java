@@ -10,6 +10,8 @@ public interface UserDAO {
 
     void update(String login, String name, String password);
 
+    void update(User user);
+
     void delete(User user);
 
     User getUserByLogin(String login);

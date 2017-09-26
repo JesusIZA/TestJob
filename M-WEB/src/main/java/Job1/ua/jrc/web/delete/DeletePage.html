@@ -2,9 +2,21 @@
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>Delete</title>
 </head>
 <body>
-delete
+    <div wicket:id="header"></div>
+
+    <form wicket:id="form">
+        Login:
+        <input type="text" wicket:id="login">
+        <label wicket:id="labelLogin"/><br />
+        Password:
+        <input type="text" wicket:id="password">
+        <label wicket:id="labelPassword"/><br />
+
+        <input type="submit" value="Delete" wicket:id="submit">
+
+    </form>
 </body>
 </html>
