@@ -5,7 +5,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
@@ -25,28 +24,15 @@ public class RegistrationPage extends WebPage{
 
         Form form = new Form("form");
 
-        final Label labelLogin = new Label("labelLogin", "This Login already does exist!");
-        labelLogin.setVisible(false);
+        final Label labelLogin = new Label("labelLogin", "");
         labelLogin.setOutputMarkupId(true);
         labelLogin.setOutputMarkupPlaceholderTag(true);
 
-        final Label labelLogin2 = new Label("labelLogin2", "Login is not entered!");
-        labelLogin2.setVisible(false);
-        labelLogin2.setOutputMarkupId(true);
-        labelLogin2.setOutputMarkupPlaceholderTag(true);
-
-        final Label labelPassword = new Label("labelPassword", "Password is too short!");
-        labelPassword.setVisible(false);
+        final Label labelPassword = new Label("labelPassword", "");
         labelPassword.setOutputMarkupId(true);
         labelPassword.setOutputMarkupPlaceholderTag(true);
 
-        final Label labelPassword2 = new Label("labelPassword2", "Password is not entered!");
-        labelPassword2.setVisible(false);
-        labelPassword2.setOutputMarkupId(true);
-        labelPassword2.setOutputMarkupPlaceholderTag(true);
-
-        final Label labelName = new Label("labelName", "Name is not entered!");
-        labelName.setVisible(false);
+        final Label labelName = new Label("labelName", "");
         labelName.setOutputMarkupId(true);
         labelName.setOutputMarkupPlaceholderTag(true);
 
@@ -56,7 +42,7 @@ public class RegistrationPage extends WebPage{
         final TextField password = new TextField("password", new PropertyModel(user, "password"));
         password.setOutputMarkupId(true);
 
-        final TextField name = new TextField("name", new PropertyModel(user, "password"));
+        final TextField name = new TextField("name", new PropertyModel(user, "name"));
         name.setOutputMarkupId(true);
 
         AjaxButton ajaxButton = new AjaxButton("submit"){
@@ -80,11 +66,9 @@ public class RegistrationPage extends WebPage{
 
                             if (flag == true) {
                                 //Login does exist
-                                labelName.setVisible(false);
-                                labelPassword2.setVisible(false);
-                                labelPassword.setVisible(false);
-                                labelLogin2.setVisible(false);
-                                labelLogin.setVisible(true);
+                                labelName.setDefaultModelObject("");
+                                labelPassword.setDefaultModelObject("");
+                                labelLogin.setDefaultModelObject("Login does exist!");
 
                             } else {
                                 if (password.getInput().length() >= 4) {
@@ -100,42 +84,32 @@ public class RegistrationPage extends WebPage{
 
                                     setResponsePage(WelcomePage.class, parameters);
                                 } else {
-                                    labelName.setVisible(false);
-                                    labelLogin2.setVisible(false);
-                                    labelLogin.setVisible(false);
-                                    labelPassword2.setVisible(false);
-                                    labelPassword.setVisible(true);
+                                    labelName.setDefaultModelObject("");
+                                    labelLogin.setDefaultModelObject("");
+                                    labelPassword.setDefaultModelObject("Password is too short!");
                                 }
                             }
                         } else {
                             //Password is not entered
-                            labelName.setVisible(false);
-                            labelLogin2.setVisible(false);
-                            labelLogin.setVisible(false);
-                            labelPassword2.setVisible(true);
-                            labelPassword.setVisible(false);
+                            labelName.setDefaultModelObject("");
+                            labelLogin.setDefaultModelObject("");
+                            labelPassword.setDefaultModelObject("Password is not entered");
                         }
                     } else {
                         //Name is not entered
-                        labelPassword2.setVisible(false);
-                        labelPassword.setVisible(false);
-                        labelLogin.setVisible(false);
-                        labelLogin2.setVisible(false);
-                        labelName.setVisible(true);
+                        labelPassword.setDefaultModelObject("");
+                        labelLogin.setDefaultModelObject("");
+                        labelName.setDefaultModelObject("Name is not entered");
                     }
                 } else {
                     //Login is not entered
-                    labelName.setVisible(false);
-                    labelPassword2.setVisible(false);
-                    labelPassword.setVisible(false);
-                    labelLogin.setVisible(false);
-                    labelLogin2.setVisible(true);
+                    labelName.setDefaultModelObject("");
+                    labelPassword.setDefaultModelObject("");
+                    labelLogin.setDefaultModelObject("Login is not entered");
                 }
 
                 target.add(labelLogin);
-                target.add(labelLogin2);
                 target.add(labelPassword);
-                target.add(labelPassword2);
                 target.add(labelName);
 
             }
@@ -145,14 +119,12 @@ public class RegistrationPage extends WebPage{
 
         form.add(login);
         form.add(labelLogin);
-        form.add(labelLogin2);
 
         form.add(name);
         form.add(labelName);
 
         form.add(password);
         form.add(labelPassword);
-        form.add(labelPassword2);
 
         form.add(ajaxButton);
 

@@ -5,22 +5,48 @@
     <title>Welcome</title>
 </head>
 <body>
+    <div wicket:id="namer"></div>
     <div wicket:id="loginer"></div>
+
     <div>
-        <a href="../Job1/wicket/bookmarkable/Job1.ua.jrc.web.registration.RegistrationPage">Add new</a>
+        <form wicket:id="fupdate">
+            <input type="submit" value="Edit profile" wicket:id="update">
+        </form>
+        <form wicket:id="fdelete">
+            <input type="submit" value="Delete profile" wicket:id="delete">
+        </form>
     </div>
-    <table border="1">
-        <tr>
-            <th>Login</th>
-            <th>Name</th>
-            <th>Password</th>
-        </tr>
-        <tr wicket:id="rows">
-            <td wicket:id="login"></td>
-            <td wicket:id="name"></td>
-            <td wicket:id="password"></td>
-        </tr>
-    </table>
+
+    <div>
+        <a href="../Job1/wicket/bookmarkable/Job1.ua.jrc.web.registration.RegistrationPage">Add new profile</a>
+    </div>
+
+    <div>
+        <form wicket:id="formSearch">
+            <input type="text" wicket:id="searchText">
+            <input type="submit" value="Search" wicket:id="search">
+
+            <div>Searching users</div>
+            <div wicket:id="searchU"></div>
+
+        </form>
+    </div>
+
+    <div>
+        <div>All users</div>
+        <table border="1">
+            <tr>
+                <th>Login</th>
+                <th>Name</th>
+                <th>Password</th>
+            </tr>
+            <tr wicket:id="rows">
+                <td wicket:id="login"></td>
+                <td wicket:id="name"></td>
+                <td wicket:id="password"></td>
+            </tr>
+        </table>
+    </div>
 
 </body>
 </html>

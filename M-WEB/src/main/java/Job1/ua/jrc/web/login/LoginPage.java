@@ -1,12 +1,10 @@
 package Job1.ua.jrc.web.login;
 
-import Job1.ua.jrc.web.registration.RegistrationPage;
 import Job1.ua.jrc.web.welcomepage.WelcomePage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
@@ -27,25 +25,13 @@ public class LoginPage extends WebPage {
 
         Form form = new Form("form");
 
-        final Label labelLogin = new Label("labelLogin", "Login does not exist!");
-        labelLogin.setVisible(false);
+        final Label labelLogin = new Label("labelLogin", "");
         labelLogin.setOutputMarkupId(true);
         labelLogin.setOutputMarkupPlaceholderTag(true);
 
-        final Label labelLogin2 = new Label("labelLogin2", "Login does not entered!");
-        labelLogin2.setVisible(false);
-        labelLogin2.setOutputMarkupId(true);
-        labelLogin2.setOutputMarkupPlaceholderTag(true);
-
-        final Label labelPassword = new Label("labelPassword", "Password failed!");
-        labelPassword.setVisible(false);
+        final Label labelPassword = new Label("labelPassword", "");
         labelPassword.setOutputMarkupId(true);
         labelPassword.setOutputMarkupPlaceholderTag(true);
-
-        final Label labelPassword2 = new Label("labelPassword2", "Password does not entered!");
-        labelPassword2.setVisible(false);
-        labelPassword2.setOutputMarkupId(true);
-        labelPassword2.setOutputMarkupPlaceholderTag(true);
 
         final TextField login = new TextField("login", new PropertyModel(user, "login"));
         login.setOutputMarkupId(true);
@@ -72,11 +58,8 @@ public class LoginPage extends WebPage {
                         }
 
                         if(flag == ""){
-                            labelPassword2.setVisible(false);
-                            labelPassword.setVisible(false);
-                            labelLogin2.setVisible(false);
-                            labelLogin.setVisible(true);
-
+                            labelPassword.setDefaultModelObject("");
+                            labelLogin.setDefaultModelObject("Login does not exist!");
                         } else {
                             if (password.getInput().hashCode() == h2DAO.getUserByLogin(login.getInput()).getPassword().hashCode()) {
                                 PageParameters parameters = new PageParameters();
@@ -84,29 +67,21 @@ public class LoginPage extends WebPage {
 
                                 setResponsePage(WelcomePage.class, parameters);
                             } else {
-                                labelLogin2.setVisible(false);
-                                labelLogin.setVisible(false);
-                                labelPassword2.setVisible(false);
-                                labelPassword.setVisible(true);
+                                labelLogin.setDefaultModelObject("");
+                                labelPassword.setDefaultModelObject("Password is failed!");
                             }
                         }
                     } else {
-                        labelLogin2.setVisible(false);
-                        labelLogin.setVisible(false);
-                        labelPassword2.setVisible(true);
-                        labelPassword.setVisible(false);
+                        labelLogin.setDefaultModelObject("");
+                        labelPassword.setDefaultModelObject("Password is not entered!");
                     }
                 } else {
-                    labelPassword2.setVisible(false);
-                    labelPassword.setVisible(false);
-                    labelLogin.setVisible(false);
-                    labelLogin2.setVisible(true);
+                    labelPassword.setDefaultModelObject("");
+                    labelLogin.setDefaultModelObject("Login is not entered!");
                 }
 
                 target.add(labelLogin);
-                target.add(labelLogin2);
                 target.add(labelPassword);
-                target.add(labelPassword2);
 
             }
         };
@@ -115,14 +90,10 @@ public class LoginPage extends WebPage {
 
         form.add(login);
         form.add(labelLogin);
-        form.add(labelLogin2);
 
         form.add(password);
         form.add(labelPassword);
-        form.add(labelPassword2);
 
         form.add(ajaxButton);
-
-
     }
 }

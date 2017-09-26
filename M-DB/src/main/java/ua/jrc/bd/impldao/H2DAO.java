@@ -8,12 +8,13 @@ import ua.jrc.bd.dao.UserDAO;
 import ua.jrc.bd.entity.User;
 
 import javax.sql.DataSource;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 @Component("H2DAO")
-public class H2DAO implements UserDAO {
+public class H2DAO implements UserDAO, Serializable{
 
     private JdbcTemplate jdbcTemplate;
 
