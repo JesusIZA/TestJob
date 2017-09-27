@@ -21,7 +21,7 @@
           <element id="library" level="project" name="Maven: org.ow2.asm:asm:4.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.7.4" />
-          <element id="library" level="project" name="Maven: com.h2database:h2:1.4.193" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.1.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.apache.wicket:wicket-core:7.9.0" />
