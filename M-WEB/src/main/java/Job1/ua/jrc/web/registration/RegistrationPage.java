@@ -1,10 +1,12 @@
 package Job1.ua.jrc.web.registration;
 
+import Job1.ua.jrc.web.login.LoginPage;
 import Job1.ua.jrc.web.welcomepage.WelcomePage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
@@ -114,6 +116,20 @@ public class RegistrationPage extends WebPage{
 
             }
         };
+
+        Form sign = new Form("form2");
+
+        Button signBtn = new Button("sign"){
+            @Override
+            public void onSubmit(){
+                super.onSubmit();
+
+
+                setResponsePage(LoginPage.class);
+            }
+        };
+        sign.add(signBtn);
+        add(sign);
 
         add(form);
 

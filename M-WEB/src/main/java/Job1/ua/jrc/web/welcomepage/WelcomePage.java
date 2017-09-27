@@ -1,6 +1,7 @@
 package Job1.ua.jrc.web.welcomepage;
 
 import Job1.ua.jrc.web.delete.DeletePage;
+import Job1.ua.jrc.web.registration.RegistrationPage;
 import Job1.ua.jrc.web.update.UpdatePage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -121,6 +122,20 @@ public class WelcomePage extends WebPage{
         };
 
         add(listView);
+
+        Form reg = new Form("form2");
+
+        Button regBtn = new Button("reg"){
+            @Override
+            public void onSubmit(){
+                super.onSubmit();
+
+
+                setResponsePage(RegistrationPage.class);
+            }
+        };
+        reg.add(regBtn);
+        add(reg);
     }
 
 }

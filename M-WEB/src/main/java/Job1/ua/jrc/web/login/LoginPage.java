@@ -1,10 +1,13 @@
 package Job1.ua.jrc.web.login;
 
+import Job1.ua.jrc.web.delete.DeletePage;
+import Job1.ua.jrc.web.registration.RegistrationPage;
 import Job1.ua.jrc.web.welcomepage.WelcomePage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
@@ -95,5 +98,19 @@ public class LoginPage extends WebPage {
         form.add(labelPassword);
 
         form.add(ajaxButton);
+
+        Form reg = new Form("form2");
+
+        Button regBtn = new Button("reg"){
+            @Override
+            public void onSubmit(){
+                super.onSubmit();
+
+
+                setResponsePage(RegistrationPage.class);
+            }
+        };
+        reg.add(regBtn);
+        add(reg);
     }
 }
